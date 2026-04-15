@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soyado Agencia | Rental Audiovisual</title>
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; background:#0d0d0d; color:#fff; }
+    header { padding:20px; text-align:center; font-size:24px; font-weight:bold; letter-spacing:2px; }
+    .hero { text-align:center; padding:60px 20px; }
+    .hero h1 { font-size:40px; }
+    .sub { color:#ccc; margin-top:10px; }
+    .btn { display:inline-block; margin-top:15px; padding:10px 20px; background:gold; color:black; text-decoration:none; font-weight:bold; border-radius:6px; }
+    .catalogo { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:40px; }
+    .card { background:#1a1a1a; padding:15px; border-radius:12px; overflow:hidden; }
+    .card img { width:100%; height:200px; object-fit:contain; background:#111; border-radius:8px; }
+    .precio { margin:8px 0; color:gold; }
+    .section { padding:60px 20px; text-align:center; }
+    .section h2 { font-size:30px; margin-bottom:10px; }
+    .highlight { color:gold; font-weight:bold; }
+    .footer { padding:30px; text-align:center; font-size:14px; color:#aaa; border-top:1px solid #222; }
+    form { max-width:500px; margin:30px auto; text-align:left; }
+    input, textarea, select { width:100%; padding:10px; margin:10px 0; border-radius:6px; border:none; }
+    label { font-size:14px; color:#ccc; }
+    .condiciones { max-width:800px; margin:0 auto; text-align:left; }
+    .condiciones p { margin-bottom:15px; }
+  </style>
+</head>
+<body>
+
+<header>Soyado Agencia</header>
+
+<section class="hero">
+  <h1>Rental de Equipos Audiovisuales</h1>
+  <p class="sub">Equipos con operador incluido | Producción profesional</p>
+  <a class="btn" href="#catalogo">Ver Equipos</a>
+</section>
+
+<section id="catalogo" class="catalogo"></section>
+
+<section class="section">
+  <h2>Dirección de Fotografía</h2>
+  <p>Servicio <span class="highlight">premium</span> especializado en iluminación cinematográfica.</p>
+  <p>Diseñamos y ejecutamos la estética visual de tu producción.</p>
+  <p class="highlight">Desde $600.000 (4h) | $1.200.000 (8h)</p>
+  <a class="btn" href="https://wa.me/573192941446?text=Hola, quiero contratar Dirección de Fotografía" target="_blank">Cotizar</a>
+</section>
+
+<section class="section">
+  <h2>Formulario de Reserva</h2>
+  <form onsubmit="enviarFormulario(event)">
+    <label>Nombre completo</label>
+    <input type="text" id="nombre" required>
+
+    <label>Cédula</label>
+    <input type="text" id="cedula" required>
+
+    <label>Teléfono</label>
+    <input type="text" id="telefono" required>
+
+    <label>Correo</label>
+    <input type="email" id="correo" required>
+
+    <label>Equipo</label>
+    <select id="equipo" required></select>
+
+    <label>Fecha</label>
+    <input type="date" id="fecha" required>
+
+    <label>Franja horaria</label>
+    <select id="horas">
+      <option value="4 horas">4 horas</option>
+      <option value="8 horas">8 horas</option>
+    </select>
+
+    <label>Dirección de locación</label>
+    <input type="text" id="direccion" required>
+
+    <label>Tipo de producción</label>
+    <input type="text" id="produccion" required>
+
+    <label>Detalles adicionales</label>
+    <textarea id="mensaje"></textarea>
+
+    <button class="btn" type="submit">Enviar solicitud</button>
+  </form>
+</section>
+
+<section class="section">
+  <h2>Políticas de Alquiler</h2>
+  <div class="condiciones">
+    <p><span class="highlight">01 Operador técnico obligatorio</span><br>Todo alquiler incluye operador. No se realiza alquiler sin esta condición.</p>
+    <p><span class="highlight">02 Reserva con anticipación</span><br>Mínimo 24h. 48h para múltiples equipos. Confirmación con anticipo del 50%.</p>
+    <p><span class="highlight">03 Cancelaciones</span><br>Con más de 72 horas de anticipación: anticipo del 30% reembolsable. Con menos de 48 horas: el anticipo no es reembolsable. Por fuerza mayor justificada se reprograma sin costo.</p>
+    <p><span class="highlight">04 Responsabilidad</span><br>El cliente garantiza accesos. Daños por mal uso son responsabilidad del contratante.</p>
+    <p><span class="highlight">05 Franjas horarias</span><br>4h media jornada. 8h jornada completa. Incluye montaje.</p>
+    <p><span class="highlight">06 Datos requeridos</span><br>Nombre, cédula, teléfono, correo, fecha, locación y tipo de producción.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Pagos</h2>
+  <p>Bancolombia | Nequi | Nu Bank | Efectivo</p>
+</section>
+
+<section class="footer">
+  © 2026 Soyado Agencia
+</section>
+
+<script>
+const equipos = [
+  {nombre:"C-Stand", img:"images/cstand.jpg", precio4h:30000, precio8h:40000},
+  {nombre:"Tripode de luz", img:"images/tripode.jpg", precio4h:18000, precio8h:25000},
+  {nombre:"DJI Ronin 4", img:"images/ronin4.jpg", precio4h:180000, precio8h:250000},
+  {nombre:"Zhiyun Weebill 3", img:"images/weebill3.jpg", precio4h:90000, precio8h:130000},
+  {nombre:"Snoot Optico", img:"images/snoot.jpg", precio4h:85000, precio8h:120000}
+];
+
+const contenedor = document.getElementById("catalogo");
+const selectEquipo = document.getElementById("equipo");
+
+equipos.forEach(eq => {
+  const card = document.createElement("div");
+  card.className = "card";
+  const mensaje = encodeURIComponent(`Hola, quiero alquilar ${eq.nombre}`);
+
+  card.innerHTML = `
+    <img src="${eq.img}" alt="${eq.nombre}">
+    <h3>${eq.nombre}</h3>
+    <p class="precio">4h: $${eq.precio4h.toLocaleString()}</p>
+    <p class="precio">8h: $${eq.precio8h.toLocaleString()}</p>
+    <a class="btn" href="https://wa.me/573192941446?text=${mensaje}" target="_blank">Reservar</a>
+  `;
+
+  contenedor.appendChild(card);
+
+  const option = document.createElement("option");
+  option.value = eq.nombre;
+  option.textContent = eq.nombre;
+  selectEquipo.appendChild(option);
+});
+
+function enviarFormulario(e) {
+  e.preventDefault();
+
+  const nombre = document.getElementById("nombre").value;
+  const cedula = document.getElementById("cedula").value;
+  const telefono = document.getElementById("telefono").value;
+  const correo = document.getElementById("correo").value;
+  const equipo = document.getElementById("equipo").value;
+  const fecha = document.getElementById("fecha").value;
+  const horas = document.getElementById("horas").value;
+  const direccion = document.getElementById("direccion").value;
+  const produccion = document.getElementById("produccion").value;
+  const mensajeExtra = document.getElementById("mensaje").value;
+
+  const texto = `Hola, soy ${nombre}%0ACédula: ${cedula}%0ATeléfono: ${telefono}%0ACorreo: ${correo}%0AEquipo: ${equipo}%0AFecha: ${fecha}%0AFranja: ${horas}%0ALocación: ${direccion}%0AProducción: ${produccion}%0ADetalles: ${mensajeExtra}`;
+
+  window.open(`https://wa.me/573192941446?text=${texto}`, '_blank');
+}
+</script>
+
+</body>
+</html>
