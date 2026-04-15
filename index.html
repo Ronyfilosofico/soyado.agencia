@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soyado Agencia</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+}
+
+header{
+  position:fixed;
+  width:100%;
+  top:0;
+  background:#0b0b0b;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  padding:15px;
+  z-index:1000;
+}
+
+header button{
+  background:none;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.section{
+  display:none;
+  padding:100px 20px 60px;
+}
+
+.active{display:block;}
+
+.hero{
+  height:100vh;
+  background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{font-size:50px;}
+.hero p{color:#ccc;}
+
+.btn{
+  margin-top:20px;
+  padding:10px 20px;
+  background:gold;
+  color:black;
+  text-decoration:none;
+  border-radius:6px;
+}
+
+.catalogo{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#141414;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.card img{width:100%; height:200px; object-fit:contain; background:#000;}
+.card-content{padding:15px;}
+.precio{color:gold;}
+
+.grid-condiciones{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.condicion{
+  background:#141414;
+  padding:20px;
+  border-radius:10px;
+}
+
+.logos-pagos{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+}
+
+.logos-pagos img{
+  height:60px;
+}
+
+form{max-width:500px;margin:auto;}
+input,select,textarea{width:100%;padding:10px;margin:10px 0;border:none;border-radius:6px;}
+
+.about{max-width:800px;margin:auto;line-height:1.6;}
+
+</style>
+</head>
+<body>
+
+<header>
+<button onclick="show('home')">Inicio</button>
+<button onclick="show('equipos')">Equipos</button>
+<button onclick="show('servicios')">Servicios</button>
+<button onclick="show('cotizacion')">Cotizaciones</button>
+<button onclick="show('sobre')">Sobre nosotros</button>
+</header>
+
+<section id="home" class="hero active">
+<h1>Iluminación Cinematográfica</h1>
+<p>Creamos atmósferas visuales a través de la luz</p>
+</section>
+
+<section id="equipos" class="section">
+<h2>Equipos</h2>
+<div id="catalogo" class="catalogo"></div>
+</section>
+
+<section id="servicios" class="section">
+<h2>Servicios</h2>
+<p><b>Dirección de Fotografía</b></p>
+<p>$600.000 (4h) | $1.200.000 (8h)</p>
+<p><b>Operador de Cámara</b></p>
+<p>$600.000 (4h) | $1.200.000 (8h)</p>
+
+<h2>Condiciones</h2>
+<div class="grid-condiciones">
+<div class="condicion"><b>Operador obligatorio</b><br>Todos los equipos incluyen operador especializado.</div>
+<div class="condicion"><b>Reserva</b><br>Se requiere 50% de anticipo para confirmar.</div>
+<div class="condicion"><b>Cancelaciones</b><br>+72h: reembolso 30%. -48h: no reembolso.</div>
+<div class="condicion"><b>Responsabilidad</b><br>El cliente responde por daños por mal uso.</div>
+<div class="condicion"><b>Horarios</b><br>4h media jornada / 8h jornada completa.</div>
+<div class="condicion"><b>Datos requeridos</b><br>Nombre, cédula, fecha, locación y producción.</div>
+</div>
+
+<h2>Pagos</h2>
+<div class="logos-pagos">
+<img src="images/pagos/bancolombia.png">
+<img src="images/pagos/nequi.png">
+<img src="images/pagos/nubank.png">
+</div>
+</section>
+
+<section id="cotizacion" class="section">
+<h2>Solicitar cotización</h2>
+<form onsubmit="enviarFormulario(event)">
+<input id="nombre" placeholder="Nombre" required>
+<input id="telefono" placeholder="Teléfono" required>
+<select id="equipo"></select>
+<input type="date" id="fecha" required>
+<button class="btn">Enviar</button>
+</form>
+</section>
+
+<section id="sobre" class="section">
+<h2>Sobre Soyado Agencia</h2>
+<div class="about">
+<p>Soyado Agencia es una productora audiovisual con más de 8 años de experiencia trabajando en comerciales, videoclips y eventos.</p>
+<p>Especializados en fotometría e iluminación mixta.</p>
+<p><b>Todos los equipos incluyen operador especializado.</b></p>
+<p><b>Creamos atmósferas visuales que transmiten intención y narrativa a través de la luz.</b></p>
+<p>Medellín</p>
+</div>
+</section>
+
+<script>
+function show(id){
+  document.querySelectorAll('.section, .hero').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+const equipos=[
+{nombre:"C-Stand",img:"images/cstand.jpg",precio4h:30000,precio8h:40000},
+{nombre:"Tripode",img:"images/tripode.jpg",precio4h:18000,precio8h:25000},
+{nombre:"Ronin 4",img:"images/ronin4.jpg",precio4h:180000,precio8h:250000}
+];
+
+const cont=document.getElementById('catalogo');
+const sel=document.getElementById('equipo');
+
+equipos.forEach(e=>{
+  cont.innerHTML+=`<div class="card"><img src="${e.img}"><div class="card-content"><h3>${e.nombre}</h3><p class="precio">4h $${e.precio4h}</p><p class="precio">8h $${e.precio8h}</p></div></div>`;
+  sel.innerHTML+=`<option>${e.nombre}</option>`;
+});
+
+function enviarFormulario(e){
+  e.preventDefault();
+  window.open(`https://wa.me/573192941446?text=Hola soy ${nombre.value}`);
+}
+</script>
+
+</body>
+</html>
