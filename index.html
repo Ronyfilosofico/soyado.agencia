@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soyado Agencia | Rental Audiovisual</title>
+  <style>
+    body {
+      margin:0;
+      font-family: Arial, sans-serif;
+      color:#fff;
+      background:#0b0b0b;
+      background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 4px 4px;
+    }
+
+    header { padding:20px; text-align:center; font-size:26px; font-weight:bold; letter-spacing:3px; }
+
+    .hero {
+      height:80vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero h1 { font-size:50px; margin:0; }
+    .hero p { color:#ccc; }
+
+    .btn { margin-top:15px; padding:10px 20px; background:gold; color:black; text-decoration:none; border-radius:6px; font-weight:bold; }
+
+    .section { padding:60px 20px; text-align:center; }
+
+    .filtros button { margin:5px; padding:8px 12px; border:none; border-radius:5px; cursor:pointer; }
+
+    .catalogo { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:40px; }
+
+    .card { background:#141414; border-radius:12px; overflow:hidden; transition:0.3s; }
+    .card:hover { transform:scale(1.03); }
+    .card img { width:100%; height:200px; object-fit:contain; background:#000; }
+    .card-content { padding:15px; }
+    .precio { color:gold; }
+
+    form { max-width:500px; margin:auto; text-align:left; }
+    input, textarea, select { width:100%; padding:10px; margin:10px 0; border:none; border-radius:6px; }
+
+    .about { max-width:800px; margin:auto; text-align:left; line-height:1.6; }
+    .highlight { color:gold; font-weight:bold; }
+
+    .logos-pagos {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:40px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.logos-pagos img {
+  height:40px;
+  filter: grayscale(100%) brightness(1.8);
+  opacity:0.8;
+  transition: all 0.3s ease;
+}
+
+.logos-pagos img:hover {
+  filter: grayscale(0%) brightness(1);
+  opacity:1;
+  transform: scale(1.1);
+}
+
+.footer { padding:30px; text-align:center; color:#aaa; border-top:1px solid #222; }
+  </style>
+</head>
+<body>
+
+<header>Soyado Agencia</header>
+
+<section class="hero">
+  <h1>Iluminación Cinematográfica</h1>
+  <p>Creamos atmósferas visuales a través de la luz</p>
+  <a class="btn" href="#catalogo">Ver Equipos</a>
+</section>
+
+<section class="section">
+  <h2>Filtrar equipos</h2>
+  <div class="filtros">
+    <button onclick="filtrar('todos')">Todos</button>
+    <button onclick="filtrar('luz')">Iluminación</button>
+    <button onclick="filtrar('gimbal')">Gimbals</button>
+    <button onclick="filtrar('soporte')">Soportes</button>
+  </div>
+</section>
+
+<section id="catalogo" class="catalogo"></section>
+
+<section class="section">
+  <h2>Dirección de Fotografía</h2>
+  <p>Servicio premium especializado en iluminación cinematográfica</p>
+  <p class="highlight">$600.000 (4h) | $1.200.000 (8h)</p>
+  <a class="btn" href="https://wa.me/573192941446" target="_blank">Cotizar</a>
+</section>
+
+<section class="section">
+  <h2>Formulario de Reserva</h2>
+  <form onsubmit="enviarFormulario(event)">
+    <input type="text" id="nombre" placeholder="Nombre completo" required>
+    <input type="text" id="cedula" placeholder="Cédula" required>
+    <input type="text" id="telefono" placeholder="Teléfono" required>
+    <input type="email" id="correo" placeholder="Correo" required>
+    <select id="equipo"></select>
+    <input type="date" id="fecha" required>
+    <select id="horas">
+      <option>4 horas</option>
+      <option>8 horas</option>
+    </select>
+    <input type="text" id="direccion" placeholder="Dirección locación" required>
+    <input type="text" id="produccion" placeholder="Tipo de producción" required>
+    <textarea id="mensaje" placeholder="Detalles"></textarea>
+    <button class="btn" type="submit">Enviar</button>
+  </form>
+</section>
+
+<section class="section">
+  <h2>Políticas de Alquiler</h2>
+  <p class="highlight">Operador técnico obligatorio</p>
+  <p>Reserva con 50% anticipado</p>
+  <p>Cancelaciones: +72h reembolso 30% | -48h no reembolsable</p>
+  <p>Responsabilidad del cliente en locación</p>
+  <p>4h media jornada | 8h jornada completa</p>
+</section>
+
+<section class="section">
+  <h2>Pagos</h2>
+  <p>Métodos disponibles</p>
+  <div class="logos-pagos">
+    <img src="images/pagos/bancolombia.png" alt="Bancolombia">
+    <img src="images/pagos/nequi.png" alt="Nequi">
+    <img src="images/pagos/nubank.png" alt="Nu Bank">
+  </div>
+  <p style="margin-top:15px; color:#ccc;">También disponible pago en efectivo</p>
+</section>
+
+<section class="section">
+  <h2>Sobre Soyado Agencia</h2>
+  <div class="about">
+    <p><span class="highlight">Soyado Agencia</span> es una productora audiovisual con más de 8 años de experiencia en comerciales, videoclips y eventos.</p>
+    <p>Especializados en fotometría e iluminación mixta.</p>
+    <p><span class="highlight">Todos los equipos incluyen operador especializado.</span></p>
+    <p><span class="highlight">Creamos atmósferas visuales que transmiten intención y narrativa a través de la luz.</span></p>
+    <p>Medellín</p>
+  </div>
+</section>
+
+<section class="footer">© 2026 Soyado Agencia</section>
+
+<script>
+const equipos = [
+  {nombre:"C-Stand", img:"images/cstand.jpg", precio4h:30000, precio8h:40000, categoria:"soporte"},
+  {nombre:"Tripode", img:"images/tripode.jpg", precio4h:18000, precio8h:25000, categoria:"soporte"},
+  {nombre:"DJI Ronin 4", img:"images/ronin4.jpg", precio4h:180000, precio8h:250000, categoria:"gimbal"},
+  {nombre:"Weebill 3", img:"images/weebill3.jpg", precio4h:90000, precio8h:130000, categoria:"gimbal"},
+  {nombre:"Snoot", img:"images/snoot.jpg", precio4h:85000, precio8h:120000, categoria:"luz"}
+];
+
+const contenedor = document.getElementById("catalogo");
+const selectEquipo = document.getElementById("equipo");
+
+function mostrarEquipos(lista) {
+  contenedor.innerHTML = "";
+  lista.forEach(eq => {
+    const card = document.createElement("div");
+    card.className = "card";
+    const mensaje = encodeURIComponent(`Hola, quiero alquilar ${eq.nombre}`);
+
+    card.innerHTML = `
+      <img src="${eq.img}">
+      <div class="card-content">
+        <h3>${eq.nombre}</h3>
+        <p class="precio">4h: $${eq.precio4h.toLocaleString()}</p>
+        <p class="precio">8h: $${eq.precio8h.toLocaleString()}</p>
+        <a class="btn" href="https://wa.me/573192941446?text=${mensaje}" target="_blank">Reservar</a>
+      </div>
+    `;
+
+    contenedor.appendChild(card);
+
+    const option = document.createElement("option");
+    option.value = eq.nombre;
+    option.textContent = eq.nombre;
+    selectEquipo.appendChild(option);
+  });
+}
+
+function filtrar(cat) {
+  if(cat==='todos') mostrarEquipos(equipos);
+  else mostrarEquipos(equipos.filter(e=>e.categoria===cat));
+}
+
+function enviarFormulario(e){
+  e.preventDefault();
+  const texto = `Hola, soy ${nombre.value}%0AEquipo: ${equipo.value}%0AFecha: ${fecha.value}`;
+  window.open(`https://wa.me/573192941446?text=${texto}`);
+}
+
+mostrarEquipos(equipos);
+</script>
+
+</body>
+</html>
