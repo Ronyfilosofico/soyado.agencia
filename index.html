@@ -9,7 +9,6 @@
 body{margin:0;font-family:Arial;background:#0b0b0b;color:#fff;overflow-x:hidden;}
 
 header{
-<img src="images/logo.png" class="logo">
 position:fixed;width:100%;top:0;background:#0b0b0b;
 display:flex;justify-content:center;flex-wrap:wrap;
 gap:20px;padding:15px;z-index:1000;
@@ -95,12 +94,15 @@ cursor:pointer;
 <body>
 
 <header>
+<img src="images/logo.png" class="logo">
+
 <button onclick="show('home')">Inicio</button>
 <button onclick="show('packs')">Packs</button>
 <button onclick="show('equipos')">Equipos</button>
 <button onclick="show('servicios')">Servicios</button>
 <button onclick="show('cotizacion')">Cotizaciones</button>
 <button onclick="show('sobre')">Sobre nosotros</button>
+<button onclick="window.open('checklist.html')">Checklist</button>
 </header>
 
 <!-- HERO -->
