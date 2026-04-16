@@ -17,43 +17,27 @@ overflow-x:hidden;
 header{
 position:fixed;width:100%;top:0;background:#0b0b0b;
 display:flex;justify-content:center;flex-wrap:wrap;
-gap:20px;padding:15px;z-index:1000;
+gap:15px;padding:15px;z-index:1000;
 }
 header button{
 background:none;border:none;color:#eab22f;
 cursor:pointer;font-weight:bold;
 }
 
-/* 🔥 FONDO CORREGIDO */
 .section{
 display:none;
 padding:100px 20px 40px;
+background:#0b0b0b;
 min-height:100vh;
-box-sizing:border-box;
-background:linear-gradient(180deg,#0b0b0b 0%, #111 100%);
 }
 .active{display:block;}
 
-/* HERO */
 .hero{
 height:100vh;
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),
 url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32');
 background-size:cover;background-position:center;
 display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-position:relative;
-z-index:1;
-}
-
-/* 🔥 FADE */
-.hero::after{
-content:"";
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:150px;
-background:linear-gradient(to bottom, transparent, #0b0b0b);
 }
 
 .highlight{color:#eab22f;font-weight:bold;}
@@ -73,11 +57,8 @@ width:100%;height:200px;object-fit:contain;background:#000;
 .card-content{padding:15px;}
 .precio{color:#eab22f;}
 
-.pack{
-background:#111;border-radius:12px;overflow:hidden;
-}
+.pack{background:#111;border-radius:12px;overflow:hidden;}
 .pack img{width:100%;height:200px;object-fit:cover;}
-.pack-content{padding:15px;}
 
 .filtros{text-align:center;margin-bottom:20px;}
 .filtros button{margin:5px;padding:8px;border:none;cursor:pointer;font-weight:bold;}
@@ -98,10 +79,7 @@ display:flex;justify-content:center;gap:20px;background:#fff;padding:20px;border
 .servicios{
 display:flex;flex-wrap:wrap;justify-content:center;gap:20px;
 }
-.servicio{
-background:#141414;padding:20px;border-radius:10px;
-}
-.servicio h3{color:#eab22f;}
+.servicio{background:#141414;padding:20px;border-radius:10px;}
 
 form{max-width:600px;margin:auto;}
 input,select,textarea{width:100%;padding:10px;margin:10px 0;border:none;border-radius:6px;}
@@ -129,47 +107,12 @@ cursor:pointer;
 <button onclick="show('servicios')">Servicios</button>
 <button onclick="show('cotizacion')">Cotizaciones</button>
 <button onclick="show('sobre')">Sobre nosotros</button>
-<button onclick="window.open('checklist.html')">Checklist</button>
 </header>
 
 <section id="home" class="hero active">
 <h1>Soyado Agencia</h1>
 <p class="highlight">Rental de equipos audiovisuales con operador incluido</p>
 <p><b>Creamos atmósferas visuales a través de la luz</b></p>
-</section>
-
-<section id="packs" class="section">
-<h2>Packs recomendados</h2>
-<div class="packs">
-
-<div class="pack">
-<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
-<div class="pack-content">
-<h3>Entrevista Pro</h3>
-<p class="precio">$350K – $750K</p>
-<button class="btn" onclick="reservarPack('Entrevista Pro')">Cotizar</button>
-</div>
-</div>
-
-<div class="pack">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-<div class="pack-content">
-<h3>Videoclip / Comercial</h3>
-<p class="precio">$600K – $1.4M</p>
-<button class="btn" onclick="reservarPack('Videoclip')">Cotizar</button>
-</div>
-</div>
-
-<div class="pack">
-<img src="https://images.unsplash.com/photo-1519183071298-a2962be96f83">
-<div class="pack-content">
-<h3>Fotografía Pro</h3>
-<p class="precio">$400K – $1M</p>
-<button class="btn" onclick="reservarPack('Fotografía Pro')">Cotizar</button>
-</div>
-</div>
-
-</div>
 </section>
 
 <section id="equipos" class="section">
@@ -180,6 +123,10 @@ cursor:pointer;
 <button onclick="filtrar('luz')">Iluminación</button>
 <button onclick="filtrar('gimbal')">Gimbals</button>
 <button onclick="filtrar('soporte')">Soportes</button>
+<button onclick="filtrar('modificador')">Modificadores</button>
+<button onclick="filtrar('tripode')">Trípodes</button>
+<button onclick="filtrar('audio')">Audio</button>
+<button onclick="filtrar('trigger')">Triggers</button>
 </div>
 
 <div id="catalogo" class="catalogo"></div>
@@ -190,87 +137,27 @@ cursor:pointer;
 <div class="condicion"><b>Reserva</b><br>50% anticipo</div>
 <div class="condicion"><b>Cancelaciones</b><br>72h reembolso parcial</div>
 <div class="condicion"><b>Responsabilidad</b><br>Cliente responde por daños</div>
-<div class="condicion"><b>Contrato obligatorio</b><br>No se realiza ningún alquiler sin contrato firmado</div>
+<div class="condicion"><b>Contrato obligatorio</b><br>No se alquila sin contrato firmado</div>
 </div>
 
-<h2>Pagos</h2>
-<div class="logos-pagos">
-<img src="images/pagos/bancolombia.png">
-<img src="images/pagos/nequi.png">
-<img src="images/pagos/nubank.png">
-</div>
 </section>
-
-<section id="servicios" class="section">
-<h2>Servicios</h2>
-<div class="servicios">
-<div class="servicio">
-<h3>Dirección de Fotografía</h3>
-<p>$600K / $1.2M</p>
-</div>
-<div class="servicio">
-<h3>Operador de Cámara</h3>
-<p>$600K / $1.2M</p>
-</div>
-</div>
-</section>
-
-<section id="cotizacion" class="section">
-<h2>Solicitar cotización</h2>
-<form onsubmit="enviarFormulario(event)">
-<input id="nombre" placeholder="Nombre completo" required>
-<input id="telefono" placeholder="Teléfono" required>
-<input id="correo" placeholder="Correo" required>
-
-<label>Equipos</label>
-<select id="equiposSel" multiple></select>
-
-<label>Servicios</label>
-<select id="serviciosSel" multiple>
-<option>Dirección de Fotografía</option>
-<option>Operador de Cámara</option>
-</select>
-
-<input type="date" id="fecha" required>
-<input id="direccion" placeholder="Dirección locación" required>
-<textarea id="mensaje" placeholder="Detalles"></textarea>
-
-<button class="btn">Enviar</button>
-</form>
-</section>
-
-<section id="sobre" class="section">
-<h2>Sobre nosotros</h2>
-<div class="about">
-<p>Soyado Agencia, +8 años en producción audiovisual.</p>
-<p>Especialistas en iluminación.</p>
-<p><b>Siempre con operador incluido.</b></p>
-</div>
-</section>
-
-<div class="whatsapp" onclick="window.open('https://wa.me/573192941446')">💬</div>
 
 <script>
+
 function show(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.querySelector('.hero').classList.remove('active');
 
-if(id==='home'){
-document.querySelector('.hero').classList.add('active');
-}else{
-document.getElementById(id).classList.add('active');
-}
+if(id==='home'){document.querySelector('.hero').classList.add('active');}
+else{document.getElementById(id).classList.add('active');}
 
 window.scrollTo(0,0);
 }
 
-function reservarPack(nombre){
-const texto=`Hola, quiero cotizar el pack ${nombre}`;
-window.open(`https://wa.me/573192941446?text=${texto}`);
-}
-
-/* 🔥 EQUIPOS RESTAURADOS */
+/* 🔥 TODOS LOS EQUIPOS (ANTIGUOS + NUEVOS) */
 const equipos=[
+
+/* EXISTENTES */
 {nombre:"C-Stand (1 unidad)",img:"images/cstand.jpg",precio4h:30000,precio8h:40000,categoria:"soporte"},
 {nombre:"Tripode (varias unidades)",img:"images/tripode.jpg",precio4h:18000,precio8h:25000,categoria:"soporte"},
 {nombre:"DJI Ronin 3 Pro Combo (1 unidad)",img:"images/ronin4.jpg",precio4h:180000,precio8h:250000,categoria:"gimbal"},
@@ -280,11 +167,29 @@ const equipos=[
 {nombre:"Neewer CB100 (1 unidad)",img:"images/neewer-cb100.jpg",precio4h:90000,precio8h:120000,categoria:"luz"},
 {nombre:"Godox AD300 Pro (2 unidades)",img:"images/godox-ad300pro.jpg",precio4h:90000,precio8h:120000,categoria:"luz"},
 {nombre:"Godox AD600 BM II (1 unidad)",img:"images/godox-ad600.jpg",precio4h:130000,precio8h:180000,categoria:"luz"},
-{nombre:"Snoot Óptico (2 unidades)",img:"images/snoot.jpg",precio4h:90000,precio8h:120000,categoria:"luz"}
+{nombre:"Snoot Óptico (2 unidades)",img:"images/snoot.jpg",precio4h:90000,precio8h:120000,categoria:"luz"},
+
+/* NUEVOS */
+{nombre:"Comica VM40 Micrófono (1 unidad)",img:"images/Comicavm40.jpg",precio4h:80000,precio8h:120000,categoria:"audio"},
+
+{nombre:"Softbox Parabólico 85cm (1 unidad)",img:"images/modificador85.jpg",precio4h:25000,precio8h:40000,categoria:"modificador"},
+{nombre:"Sombrilla Godox 165cm (1 unidad)",img:"images/sombrilla165.jpg",precio4h:35000,precio8h:60000,categoria:"modificador"},
+{nombre:"Sombrilla Parabólica 180cm (1 unidad)",img:"images/sombrilla180.jpg",precio4h:40000,precio8h:65000,categoria:"modificador"},
+{nombre:"Linterna Softbox 85cm (1 unidad)",img:"images/linterna85.jpg",precio4h:25000,precio8h:45000,categoria:"modificador"},
+{nombre:"Softbox Godox 90x90 (1 unidad)",img:"images/softbox90.jpg",precio4h:25000,precio8h:45000,categoria:"modificador"},
+{nombre:"Triopo Softbox 65cm (1 unidad)",img:"images/triopo65.jpg",precio4h:25000,precio8h:45000,categoria:"modificador"},
+
+{nombre:"Neewer Tripode 200cm (1 unidad)",img:"images/tripodenw.jpg",precio4h:80000,precio8h:125000,categoria:"tripode"},
+{nombre:"K&F Tripode (1 unidad)",img:"images/tripodekf.jpg",precio4h:45000,precio8h:65000,categoria:"tripode"},
+
+{nombre:"Godox X2T Sony",img:"images/x2t.jpg",precio4h:25000,precio8h:40000,categoria:"trigger"},
+{nombre:"Godox X3 Pro Sony",img:"images/x3pro.jpg",precio4h:35000,precio8h:50000,categoria:"trigger"},
+{nombre:"Godox Xpro Canon",img:"images/xpro.jpg",precio4h:25000,precio8h:40000,categoria:"trigger"},
+{nombre:"Godox X3 Canon",img:"images/x3.jpg",precio4h:30000,precio8h:45000,categoria:"trigger"}
+
 ];
 
 const cont=document.getElementById('catalogo');
-const sel=document.getElementById('equiposSel');
 
 function render(lista){
 cont.innerHTML='';
@@ -304,15 +209,6 @@ cont.innerHTML+=`
 function filtrar(cat){
 if(cat==='todos') render(equipos);
 else render(equipos.filter(e=>e.categoria===cat));
-}
-
-equipos.forEach(e=>{
-sel.innerHTML+=`<option>${e.nombre}</option>`;
-});
-
-function enviarFormulario(e){
-e.preventDefault();
-window.open("https://wa.me/573192941446");
 }
 
 render(equipos);
