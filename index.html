@@ -6,8 +6,15 @@
 <title>Soyado Agencia</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#0b0b0b;color:#fff;}
+body{
+margin:0;
+font-family:Arial;
+background:#0b0b0b;
+color:#fff;
+overflow-x:hidden;
+}
 
+/* HEADER */
 header{
 position:fixed;width:100%;top:0;background:#0b0b0b;
 display:flex;justify-content:center;flex-wrap:wrap;
@@ -18,15 +25,25 @@ background:none;border:none;color:#eab22f;
 cursor:pointer;font-weight:bold;
 }
 
-.section{display:none;padding:100px 20px 60px;}
+/* SECCIONES */
+.section{
+display:none;
+padding:100px 20px 40px;
+background:#0b0b0b;
+min-height:100vh;
+box-sizing:border-box;
+}
 .active{display:block;}
 
+/* HERO */
 .hero{
 height:100vh;
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),
 url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32');
 background-size:cover;background-position:center;
 display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+position:relative;
+z-index:1;
 }
 
 .highlight{color:#eab22f;font-weight:bold;}
@@ -169,7 +186,6 @@ cursor:pointer;
 
 <div id="catalogo" class="catalogo"></div>
 
-<!-- CONDICIONES -->
 <h2>Condiciones</h2>
 <div class="grid-condiciones">
 <div class="condicion"><b>Operador obligatorio</b><br>Incluido siempre</div>
@@ -244,8 +260,11 @@ function show(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.querySelector('.hero').classList.remove('active');
 
-if(id==='home'){document.querySelector('.hero').classList.add('active');}
-else{document.getElementById(id).classList.add('active');}
+if(id==='home'){
+document.querySelector('.hero').classList.add('active');
+}else{
+document.getElementById(id).classList.add('active');
+}
 
 window.scrollTo(0,0);
 }
@@ -255,11 +274,10 @@ const texto=`Hola, quiero cotizar el pack ${nombre}`;
 window.open(`https://wa.me/573192941446?text=${texto}`);
 }
 
-/* EQUIPOS COMPLETOS */
 const equipos=[
 {nombre:"C-Stand",img:"images/cstand.jpg",precio4h:30000,precio8h:40000,categoria:"soporte"},
 {nombre:"Tripode",img:"images/tripode.jpg",precio4h:18000,precio8h:25000,categoria:"soporte"},
-{nombre:"Ronin 4",img:"images/ronin4.jpg",precio4h:180000,precio8h:250000,categoria:"gimbal"},
+{nombre:"DJI Ronin 3 Pro Combo",img:"images/ronin4.jpg",precio4h:180000,precio8h:250000,categoria:"gimbal"},
 {nombre:"Zhiyun Weebill 3",img:"images/weebill3.jpg",precio4h:90000,precio8h:130000,categoria:"gimbal"},
 {nombre:"Neewer HB80C",img:"images/neewer-hb80c.jpg",precio4h:80000,precio8h:110000,categoria:"luz"},
 {nombre:"Nanlite FS300B",img:"images/nanlite-fs300b.jpg",precio4h:130000,precio8h:180000,categoria:"luz"},
