@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist Rodaje - Soyado</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #0b0b0b;
+  color: #fff;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #eab22f;
+}
+
+.section {
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #141414;
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: #eab22f;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Checklist de Rodaje</h1>
+
+<div class="section">
+<h3>Datos</h3>
+<input placeholder="Cliente">
+<input placeholder="Producción">
+<input type="date">
+<input placeholder="Locación">
+</div>
+
+<div class="section">
+<h3>Antes del servicio</h3>
+<label><input type="checkbox" class="checkbox"> Fotos iniciales tomadas</label>
+<label><input type="checkbox" class="checkbox"> Video inicial grabado</label>
+<label><input type="checkbox" class="checkbox"> Equipos revisados</label>
+<label><input type="checkbox" class="checkbox"> Funcionamiento verificado</label>
+<textarea placeholder="Observaciones"></textarea>
+</div>
+
+<div class="section">
+<h3>Durante el servicio</h3>
+<label><input type="checkbox"> Operación controlada por técnico</label>
+<label><input type="checkbox"> Equipos sin manipulación externa</label>
+<label><input type="checkbox"> Sin incidentes</label>
+</div>
+
+<div class="section">
+<h3>Después del servicio</h3>
+<label><input type="checkbox"> Fotos finales tomadas</label>
+<label><input type="checkbox"> Video final grabado</label>
+<label><input type="checkbox"> Equipos en buen estado</label>
+<textarea placeholder="Observaciones finales"></textarea>
+</div>
+
+<button class="btn" onclick="guardar()">Guardar Registro</button>
+
+<script>
+function guardar(){
+  alert("Checklist completado. Puedes hacer capturas o copiar la info.");
+}
+</script>
+
+</body>
+</html>
