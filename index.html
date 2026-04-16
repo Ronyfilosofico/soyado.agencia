@@ -6,8 +6,15 @@
 <title>Soyado Agencia</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#0b0b0b;color:#fff;overflow-x:hidden;}
+body{
+margin:0;
+font-family:Arial;
+background:#0b0b0b;
+color:#fff;
+overflow-x:hidden;
+}
 
+/* HEADER */
 header{
 position:fixed;width:100%;top:0;background:#0b0b0b;
 display:flex;justify-content:center;flex-wrap:wrap;
@@ -18,6 +25,7 @@ background:none;border:none;color:#eab22f;
 cursor:pointer;font-weight:bold;
 }
 
+/* SECCIONES */
 .section{
 display:none;
 padding:100px 20px 40px;
@@ -26,34 +34,41 @@ min-height:100vh;
 }
 .active{display:block;}
 
+/* HERO SOLO INICIO */
 .hero{
+display:none;
 height:100vh;
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.9)),
 url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32');
 background-size:cover;background-position:center;
-display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+justify-content:center;align-items:center;text-align:center;
+flex-direction:column;
 }
+.hero.active{display:flex;}
 
 .highlight{color:#eab22f;font-weight:bold;}
 
+/* GRID */
 .catalogo,.packs{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
-.card{background:#141414;border-radius:10px;overflow:hidden;}
+/* CARDS */
+.card,.pack{
+background:#141414;border-radius:10px;overflow:hidden;
+}
 .card img{width:100%;height:200px;object-fit:contain;background:#000;}
-.card-content{padding:15px;}
+.pack img{width:100%;height:200px;object-fit:cover;}
+.card-content,.pack-content{padding:15px;}
 .precio{color:#eab22f;}
 
-.pack{background:#111;border-radius:12px;overflow:hidden;}
-.pack img{width:100%;height:200px;object-fit:cover;}
-.pack-content{padding:15px;}
-
+/* FILTROS */
 .filtros{text-align:center;margin-bottom:20px;}
 .filtros button{margin:5px;padding:8px;border:none;cursor:pointer;font-weight:bold;}
 
+/* CONDICIONES */
 .grid-condiciones{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -62,30 +77,44 @@ gap:20px;margin-top:40px;
 .condicion{background:#141414;padding:20px;border-radius:10px;}
 .condicion b{color:#eab22f;}
 
+/* PAGOS (GRANDES) */
 .logos-pagos{
-display:flex;justify-content:center;gap:20px;background:#fff;padding:20px;border-radius:10px;margin-top:20px;
+display:flex;justify-content:center;gap:40px;
+background:#fff;padding:30px;border-radius:10px;margin-top:20px;
 }
-.logos-pagos img{height:50px;}
+.logos-pagos img{height:80px;}
 
+/* SERVICIOS */
 .servicios{
 display:flex;flex-wrap:wrap;justify-content:center;gap:20px;
 }
-.servicio{background:#141414;padding:20px;border-radius:10px;}
+.servicio{
+background:#141414;padding:20px;border-radius:10px;
+}
 .servicio h3{color:#eab22f;}
 
+/* FORM */
 form{max-width:600px;margin:auto;}
 input,select,textarea{width:100%;padding:10px;margin:10px 0;border:none;border-radius:6px;}
 
+/* ABOUT */
 .about{text-align:center;max-width:800px;margin:auto;}
 
 .btn{
 margin-top:10px;padding:10px;background:#eab22f;color:black;border:none;border-radius:6px;cursor:pointer;font-weight:bold;
 }
 
+/* WHATSAPP */
 .whatsapp{
 position:fixed;bottom:20px;right:20px;
 background:#25D366;color:white;padding:15px;border-radius:50%;
 cursor:pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+.hero h1{font-size:30px;}
+.logos-pagos img{height:60px;}
 }
 </style>
 </head>
@@ -99,24 +128,26 @@ cursor:pointer;
 <button onclick="show('servicios')">Servicios</button>
 <button onclick="show('cotizacion')">Cotizaciones</button>
 <button onclick="show('sobre')">Sobre nosotros</button>
-<button onclick="window.open('checklist.html')">Checklist</button>
 </header>
 
+<!-- HERO -->
 <section id="home" class="hero active">
 <h1>Soyado Agencia</h1>
 <p class="highlight">Rental de equipos audiovisuales con operador incluido</p>
 <p><b>Creamos atmósferas visuales a través de la luz</b></p>
 </section>
 
+<!-- PACKS -->
 <section id="packs" class="section">
 <h2>Packs recomendados</h2>
 <div class="packs">
 <div class="pack"><img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7"><div class="pack-content"><h3>Entrevista Pro</h3><p class="precio">$350K – $750K</p></div></div>
-<div class="pack"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"><div class="pack-content"><h3>Videoclip</h3><p class="precio">$600K – $1.4M</p></div></div>
-<div class="pack"><img src="https://images.unsplash.com/photo-1519183071298-a2962be96f83"><div class="pack-content"><h3>Fotografía</h3><p class="precio">$400K – $1M</p></div></div>
+<div class="pack"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"><div class="pack-content"><h3>Videoclip / Comercial</h3><p class="precio">$600K – $1.4M</p></div></div>
+<div class="pack"><img src="https://images.unsplash.com/photo-1519183071298-a2962be96f83"><div class="pack-content"><h3>Fotografía Pro</h3><p class="precio">$400K – $1M</p></div></div>
 </div>
 </section>
 
+<!-- EQUIPOS -->
 <section id="equipos" class="section">
 <h2>Equipos</h2>
 
@@ -125,46 +156,93 @@ cursor:pointer;
 <button onclick="filtrar('luz')">Iluminación</button>
 <button onclick="filtrar('gimbal')">Gimbals</button>
 <button onclick="filtrar('soporte')">Soportes</button>
-<button onclick="filtrar('modificador')">Modificadores</button>
-<button onclick="filtrar('tripode')">Trípodes</button>
-<button onclick="filtrar('audio')">Audio</button>
+<button onclick="filtrar('modificadores')">Modificadores</button>
+<button onclick="filtrar('audio')">Micrófonos</button>
+<button onclick="filtrar('tripodes')">Trípodes</button>
 <button onclick="filtrar('trigger')">Triggers</button>
 </div>
 
 <div id="catalogo" class="catalogo"></div>
+
+<h2>Condiciones</h2>
+<div class="grid-condiciones">
+<div class="condicion"><b>Operador obligatorio</b><br>Incluido siempre</div>
+<div class="condicion"><b>Reserva</b><br>50% anticipo</div>
+<div class="condicion"><b>Cancelaciones</b><br>72h reembolso parcial</div>
+<div class="condicion"><b>Responsabilidad</b><br>Cliente responde por daños</div>
+<div class="condicion"><b>Contrato obligatorio</b><br>No se alquila sin contrato firmado</div>
+</div>
+
+<h2>Pagos</h2>
+<div class="logos-pagos">
+<img src="images/pagos/bancolombia.png">
+<img src="images/pagos/nequi.png">
+<img src="images/pagos/nubank.png">
+</div>
+
 </section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="section">
+<h2>Servicios</h2>
+<div class="servicios">
+<div class="servicio"><h3>Dirección de Fotografía</h3><p>$600K / $1.2M</p></div>
+<div class="servicio"><h3>Operador de Cámara</h3><p>$600K / $1.2M</p></div>
+</div>
+</section>
+
+<!-- FORM -->
+<section id="cotizacion" class="section">
+<h2>Solicitar cotización</h2>
+<form>
+<input placeholder="Nombre completo" required>
+<input placeholder="Teléfono" required>
+<input placeholder="Correo" required>
+<textarea placeholder="Detalles"></textarea>
+<button class="btn">Enviar</button>
+</form>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="section">
+<h2>Sobre nosotros</h2>
+<div class="about">
+<p>Soyado Agencia, +8 años en producción audiovisual.</p>
+<p>Especialistas en iluminación.</p>
+<p><b>Siempre con operador incluido.</b></p>
+</div>
+</section>
+
+<div class="whatsapp" onclick="window.open('https://wa.me/573192941446')">💬</div>
 
 <script>
 function show(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.querySelector('.hero').classList.remove('active');
-if(id==='home'){document.querySelector('.hero').classList.add('active');}
-else{document.getElementById(id).classList.add('active');}
-window.scrollTo(0,0);
+
+if(id==='home'){
+document.querySelector('.hero').classList.add('active');
+}else{
+document.getElementById(id).classList.add('active');
+}
 }
 
+/* TODOS LOS EQUIPOS */
 const equipos=[
-
-{nombre:"C-Stand (1 unidad)",img:"images/cstand.jpg",precio4h:30000,precio8h:40000,categoria:"soporte"},
-{nombre:"Tripode (varias unidades)",img:"images/tripode.jpg",precio4h:18000,precio8h:25000,categoria:"soporte"},
-{nombre:"DJI Ronin 3 Pro Combo (1 unidad)",img:"images/ronin4.jpg",precio4h:180000,precio8h:250000,categoria:"gimbal"},
-
-{nombre:"Godox AD600 BM II (1 unidad)",img:"images/godox-ad600.jpg",precio4h:130000,precio8h:180000,categoria:"luz"},
-
+{nombre:"DJI Ronin 3 Pro Combo",img:"images/ronin4.jpg",precio4h:180000,precio8h:250000,categoria:"gimbal"},
+{nombre:"Godox AD600 BM II",img:"images/godox-ad600.jpg",precio4h:130000,precio8h:180000,categoria:"luz"},
 {nombre:"Comica VM40 Micrófono",img:"images/Comicavm40.jpg",precio4h:80000,precio8h:120000,categoria:"audio"},
-{nombre:"Softbox 85cm",img:"images/modificador85.jpg",precio4h:25000,precio8h:40000,categoria:"modificador"},
-{nombre:"Sombrilla 165cm",img:"images/sombrilla165.jpg",precio4h:35000,precio8h:60000,categoria:"modificador"},
-{nombre:"Sombrilla 180cm",img:"images/sombrilla180.jpg",precio4h:40000,precio8h:65000,categoria:"modificador"},
-{nombre:"Linterna 85cm",img:"images/linterna85.jpg",precio4h:25000,precio8h:45000,categoria:"modificador"},
-
-{nombre:"Tripode Neewer",img:"images/tripodenw.jpg",precio4h:80000,precio8h:125000,categoria:"tripode"},
-
-{nombre:"Godox X2T",img:"images/x2t.jpg",precio4h:25000,precio8h:40000,categoria:"trigger"}
-
+{nombre:"Softbox 90x90",img:"images/softbox90.jpg",precio4h:25000,precio8h:45000,categoria:"modificadores"},
+{nombre:"Triopo 65cm",img:"images/triopo65.jpg",precio4h:25000,precio8h:45000,categoria:"modificadores"},
+{nombre:"Neewer Tripode 200cm",img:"images/tripodenw.jpg",precio4h:80000,precio8h:125000,categoria:"tripodes"},
+{nombre:"K&F Tripode",img:"images/tripodekf.jpg",precio4h:45000,precio8h:65000,categoria:"tripodes"},
+{nombre:"Godox X2T Sony",img:"images/x2t.jpg",precio4h:25000,precio8h:40000,categoria:"trigger"},
+{nombre:"Godox X3 Pro",img:"images/x3pro.jpg",precio4h:35000,precio8h:50000,categoria:"trigger"}
 ];
 
-function render(lista){
 const cont=document.getElementById('catalogo');
+
+function render(lista){
 cont.innerHTML='';
 lista.forEach(e=>{
 cont.innerHTML+=`
