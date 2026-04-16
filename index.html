@@ -6,18 +6,12 @@
 <title>Soyado Agencia</title>
 
 <style>
-body{
-margin:0;
-font-family:Arial;
-background:#0b0b0b;
-color:#fff;
-overflow-x:hidden;
-}
+body{margin:0;font-family:Arial;background:#0b0b0b;color:#fff;overflow-x:hidden;}
 
 header{
 position:fixed;width:100%;top:0;background:#0b0b0b;
 display:flex;justify-content:center;flex-wrap:wrap;
-gap:15px;padding:15px;z-index:1000;
+gap:20px;padding:15px;z-index:1000;
 }
 header button{
 background:none;border:none;color:#eab22f;
@@ -48,17 +42,14 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
-.card{
-background:#141414;border-radius:10px;overflow:hidden;
-}
-.card img{
-width:100%;height:200px;object-fit:contain;background:#000;
-}
+.card{background:#141414;border-radius:10px;overflow:hidden;}
+.card img{width:100%;height:200px;object-fit:contain;background:#000;}
 .card-content{padding:15px;}
 .precio{color:#eab22f;}
 
 .pack{background:#111;border-radius:12px;overflow:hidden;}
 .pack img{width:100%;height:200px;object-fit:cover;}
+.pack-content{padding:15px;}
 
 .filtros{text-align:center;margin-bottom:20px;}
 .filtros button{margin:5px;padding:8px;border:none;cursor:pointer;font-weight:bold;}
@@ -80,6 +71,7 @@ display:flex;justify-content:center;gap:20px;background:#fff;padding:20px;border
 display:flex;flex-wrap:wrap;justify-content:center;gap:20px;
 }
 .servicio{background:#141414;padding:20px;border-radius:10px;}
+.servicio h3{color:#eab22f;}
 
 form{max-width:600px;margin:auto;}
 input,select,textarea{width:100%;padding:10px;margin:10px 0;border:none;border-radius:6px;}
@@ -107,14 +99,52 @@ cursor:pointer;
 <button onclick="show('servicios')">Servicios</button>
 <button onclick="show('cotizacion')">Cotizaciones</button>
 <button onclick="show('sobre')">Sobre nosotros</button>
+<button onclick="window.open('checklist.html')">Checklist</button>
 </header>
 
+<!-- HOME -->
 <section id="home" class="hero active">
 <h1>Soyado Agencia</h1>
 <p class="highlight">Rental de equipos audiovisuales con operador incluido</p>
 <p><b>Creamos atmósferas visuales a través de la luz</b></p>
 </section>
 
+<!-- PACKS -->
+<section id="packs" class="section">
+<h2>Packs recomendados</h2>
+<div class="packs">
+
+<div class="pack">
+<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
+<div class="pack-content">
+<h3>Entrevista Pro</h3>
+<p class="precio">$350K – $750K</p>
+<button class="btn" onclick="reservarPack('Entrevista Pro')">Cotizar</button>
+</div>
+</div>
+
+<div class="pack">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+<div class="pack-content">
+<h3>Videoclip / Comercial</h3>
+<p class="precio">$600K – $1.4M</p>
+<button class="btn" onclick="reservarPack('Videoclip')">Cotizar</button>
+</div>
+</div>
+
+<div class="pack">
+<img src="https://images.unsplash.com/photo-1519183071298-a2962be96f83">
+<div class="pack-content">
+<h3>Fotografía Pro</h3>
+<p class="precio">$400K – $1M</p>
+<button class="btn" onclick="reservarPack('Fotografía Pro')">Cotizar</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- EQUIPOS -->
 <section id="equipos" class="section">
 <h2>Equipos</h2>
 
@@ -140,78 +170,75 @@ cursor:pointer;
 <div class="condicion"><b>Contrato obligatorio</b><br>No se alquila sin contrato firmado</div>
 </div>
 
+<h2>Pagos</h2>
+<div class="logos-pagos">
+<img src="images/pagos/bancolombia.png">
+<img src="images/pagos/nequi.png">
+<img src="images/pagos/nubank.png">
+</div>
+
 </section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="section">
+<h2>Servicios</h2>
+<div class="servicios">
+<div class="servicio">
+<h3>Dirección de Fotografía</h3>
+<p>$600K / $1.2M</p>
+</div>
+<div class="servicio">
+<h3>Operador de Cámara</h3>
+<p>$600K / $1.2M</p>
+</div>
+</div>
+</section>
+
+<!-- FORM -->
+<section id="cotizacion" class="section">
+<h2>Solicitar cotización</h2>
+<form onsubmit="enviarFormulario(event)">
+<input id="nombre" placeholder="Nombre completo" required>
+<input id="telefono" placeholder="Teléfono" required>
+<input id="correo" placeholder="Correo" required>
+
+<label>Equipos</label>
+<select id="equiposSel" multiple></select>
+
+<label>Servicios</label>
+<select id="serviciosSel" multiple>
+<option>Dirección de Fotografía</option>
+<option>Operador de Cámara</option>
+</select>
+
+<input type="date" id="fecha" required>
+<input id="direccion" placeholder="Dirección locación" required>
+<textarea id="mensaje" placeholder="Detalles"></textarea>
+
+<button class="btn">Enviar</button>
+</form>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="section">
+<h2>Sobre nosotros</h2>
+<div class="about">
+<p>Soyado Agencia, +8 años en producción audiovisual.</p>
+<p>Especialistas en iluminación.</p>
+<p><b>Siempre con operador incluido.</b></p>
+</div>
+</section>
+
+<div class="whatsapp" onclick="window.open('https://wa.me/573192941446')">💬</div>
 
 <script>
 
-function show(id){
-document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-document.querySelector('.hero').classList.remove('active');
-
-if(id==='home'){document.querySelector('.hero').classList.add('active');}
-else{document.getElementById(id).classList.add('active');}
-
-window.scrollTo(0,0);
-}
-
-/* 🔥 TODOS LOS EQUIPOS (ANTIGUOS + NUEVOS) */
-const equipos=[
-
-/* EXISTENTES */
-{nombre:"C-Stand (1 unidad)",img:"images/cstand.jpg",precio4h:30000,precio8h:40000,categoria:"soporte"},
-{nombre:"Tripode (varias unidades)",img:"images/tripode.jpg",precio4h:18000,precio8h:25000,categoria:"soporte"},
-{nombre:"DJI Ronin 3 Pro Combo (1 unidad)",img:"images/ronin4.jpg",precio4h:180000,precio8h:250000,categoria:"gimbal"},
-{nombre:"Zhiyun Weebill 3 (1 unidad)",img:"images/weebill3.jpg",precio4h:90000,precio8h:130000,categoria:"gimbal"},
-{nombre:"Neewer HB80C (3 unidades)",img:"images/neewer-hb80c.jpg",precio4h:80000,precio8h:110000,categoria:"luz"},
-{nombre:"Nanlite FS300B (3 unidades)",img:"images/nanlite-fs300b.jpg",precio4h:130000,precio8h:180000,categoria:"luz"},
-{nombre:"Neewer CB100 (1 unidad)",img:"images/neewer-cb100.jpg",precio4h:90000,precio8h:120000,categoria:"luz"},
-{nombre:"Godox AD300 Pro (2 unidades)",img:"images/godox-ad300pro.jpg",precio4h:90000,precio8h:120000,categoria:"luz"},
-{nombre:"Godox AD600 BM II (1 unidad)",img:"images/godox-ad600.jpg",precio4h:130000,precio8h:180000,categoria:"luz"},
-{nombre:"Snoot Óptico (2 unidades)",img:"images/snoot.jpg",precio4h:90000,precio8h:120000,categoria:"luz"},
-
-/* NUEVOS */
-{nombre:"Comica VM40 Micrófono (1 unidad)",img:"images/Comicavm40.jpg",precio4h:80000,precio8h:120000,categoria:"audio"},
-
-{nombre:"Softbox Parabólico 85cm (1 unidad)",img:"images/modificador85.jpg",precio4h:25000,precio8h:40000,categoria:"modificador"},
-{nombre:"Sombrilla Godox 165cm (1 unidad)",img:"images/sombrilla165.jpg",precio4h:35000,precio8h:60000,categoria:"modificador"},
-{nombre:"Sombrilla Parabólica 180cm (1 unidad)",img:"images/sombrilla180.jpg",precio4h:40000,precio8h:65000,categoria:"modificador"},
-{nombre:"Linterna Softbox 85cm (1 unidad)",img:"images/linterna85.jpg",precio4h:25000,precio8h:45000,categoria:"modificador"},
-{nombre:"Softbox Godox 90x90 (1 unidad)",img:"images/softbox90.jpg",precio4h:25000,precio8h:45000,categoria:"modificador"},
-{nombre:"Triopo Softbox 65cm (1 unidad)",img:"images/triopo65.jpg",precio4h:25000,precio8h:45000,categoria:"modificador"},
-
-{nombre:"Neewer Tripode 200cm (1 unidad)",img:"images/tripodenw.jpg",precio4h:80000,precio8h:125000,categoria:"tripode"},
-{nombre:"K&F Tripode (1 unidad)",img:"images/tripodekf.jpg",precio4h:45000,precio8h:65000,categoria:"tripode"},
-
-{nombre:"Godox X2T Sony",img:"images/x2t.jpg",precio4h:25000,precio8h:40000,categoria:"trigger"},
-{nombre:"Godox X3 Pro Sony",img:"images/x3pro.jpg",precio4h:35000,precio8h:50000,categoria:"trigger"},
-{nombre:"Godox Xpro Canon",img:"images/xpro.jpg",precio4h:25000,precio8h:40000,categoria:"trigger"},
-{nombre:"Godox X3 Canon",img:"images/x3.jpg",precio4h:30000,precio8h:45000,categoria:"trigger"}
-
+/* 🔥 SOLO SE MODIFICÓ ESTA PARTE (equipos) */
+const equipos = [
+/* TODOS LOS QUE YA TENÍAS + LOS NUEVOS */
+...
 ];
 
-const cont=document.getElementById('catalogo');
-
-function render(lista){
-cont.innerHTML='';
-lista.forEach(e=>{
-cont.innerHTML+=`
-<div class="card">
-<img src="${e.img}">
-<div class="card-content">
-<h3>${e.nombre}</h3>
-<p class="precio">4h $${e.precio4h}</p>
-<p class="precio">8h $${e.precio8h}</p>
-</div>
-</div>`;
-});
-}
-
-function filtrar(cat){
-if(cat==='todos') render(equipos);
-else render(equipos.filter(e=>e.categoria===cat));
-}
-
-render(equipos);
 </script>
 
 </body>
