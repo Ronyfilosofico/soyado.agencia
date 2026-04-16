@@ -54,6 +54,7 @@ input,select,textarea{width:100%;padding:10px;margin:10px 0;border:none;border-r
 <button onclick="show('servicios')">Servicios</button>
 <button onclick="show('cotizacion')">Cotizaciones</button>
 <button onclick="show('sobre')">Sobre nosotros</button>
+<button onclick="window.open('checklist.html')">Checklist</button>
 </header>
 
 <section id="home" class="hero active">
@@ -141,35 +142,58 @@ input,select,textarea{width:100%;padding:10px;margin:10px 0;border:none;border-r
 
 <script>
 function show(id){
-  // ocultar todo
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelector('.hero').classList.remove('active');
 
-  // mostrar según selección
   if(id === 'home'){
     document.querySelector('.hero').classList.add('active');
   } else {
     document.getElementById(id).classList.add('active');
   }
 
-  // asegurar scroll arriba
   window.scrollTo(0,0);
 }
 
 const equipos=[
 {nombre:"C-Stand",img:"images/cstand.jpg",precio4h:30000,precio8h:40000,categoria:"soporte"},
 {nombre:"Tripode",img:"images/tripode.jpg",precio4h:18000,precio8h:25000,categoria:"soporte"},
-{nombre:"Ronin 4",img:"images/ronin4.jpg",precio4h:180000,precio8h:250000,categoria:"gimbal"}
+{nombre:"Ronin 4",img:"images/ronin4.jpg",precio4h:180000,precio8h:250000,categoria:"gimbal"},
+{nombre:"Zhiyun Weebill 3",img:"images/weebill3.jpg",precio4h:90000,precio8h:130000,categoria:"gimbal"},
+
+{nombre:"Neewer HB80C RGB",img:"images/neewer-hb80c.jpg",precio4h:80000,precio8h:110000,categoria:"luz"},
+{nombre:"Nanlite FS300B",img:"images/nanlite-fs300b.jpg",precio4h:130000,precio8h:180000,categoria:"luz"},
+{nombre:"Neewer CB100",img:"images/neewer-cb100.jpg",precio4h:90000,precio8h:120000,categoria:"luz"},
+{nombre:"Godox AD300 Pro",img:"images/godox-ad300pro.jpg",precio4h:90000,precio8h:120000,categoria:"luz"},
+{nombre:"Godox AD600 BM II",img:"images/godox-ad600.jpg",precio4h:130000,precio8h:180000,categoria:"luz"},
+{nombre:"Snoot Óptico",img:"images/snoot.jpg",precio4h:90000,precio8h:120000,categoria:"luz"}
 ];
 
 const cont=document.getElementById('catalogo');
 const sel=document.getElementById('equiposSel');
 
-function render(lista){cont.innerHTML='';lista.forEach(e=>{cont.innerHTML+=`<div class="card"><img src="${e.img}"><div class="card-content"><h3>${e.nombre}</h3><p class="precio">4h $${e.precio4h}</p><p class="precio">8h $${e.precio8h}</p></div></div>`;});}
+function render(lista){
+cont.innerHTML='';
+lista.forEach(e=>{
+cont.innerHTML+=`
+<div class="card">
+<img src="${e.img}">
+<div class="card-content">
+<h3>${e.nombre}</h3>
+<p class="precio">4h $${e.precio4h}</p>
+<p class="precio">8h $${e.precio8h}</p>
+</div>
+</div>`;
+});
+}
 
-function filtrar(cat){if(cat==='todos')render(equipos);else render(equipos.filter(e=>e.categoria===cat));}
+function filtrar(cat){
+if(cat==='todos') render(equipos);
+else render(equipos.filter(e=>e.categoria===cat));
+}
 
-equipos.forEach(e=>{sel.innerHTML+=`<option>${e.nombre}</option>`});
+equipos.forEach(e=>{
+sel.innerHTML+=`<option>${e.nombre}</option>`;
+});
 
 function enviarFormulario(e){
  e.preventDefault();
@@ -182,5 +206,7 @@ function enviarFormulario(e){
 render(equipos);
 </script>
 
+</body>
+</html>
 </body>
 </html>
