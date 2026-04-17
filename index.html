@@ -597,6 +597,18 @@ const texto=`Hola, soy ${nombre.value}%0AEquipos: ${[...equiposSel.selectedOptio
 window.open(`https://wa.me/573192941446?text=${texto}`);
 }
 
+function abrirModal(src){
+const modal=document.getElementById('modalImg');
+const img=document.getElementById('imgGrande');
+
+img.src=src;
+modal.style.display='flex';
+}
+
+function cerrarModal(){
+document.getElementById('modalImg').style.display='none';
+}
+
 render(equipos);
 
 </script>
