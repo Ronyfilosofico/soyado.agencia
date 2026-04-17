@@ -651,6 +651,11 @@ document.getElementById('modalImg').style.display='none';
 }
 
 render(equipos);
+document.getElementById('modalImg').addEventListener('click', function(e){
+if(e.target.id === 'modalImg'){
+cerrarModal();
+}
+});
 
 </script>
 
