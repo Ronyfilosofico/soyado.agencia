@@ -284,12 +284,41 @@ flex-direction:column;
 justify-content:space-between;
 }
 
+  .modal{
+display:none;
+position:fixed;
+z-index:9999;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+}
+
+.modal img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.cerrar{
+position:absolute;
+top:20px;
+right:30px;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
+
 </style>
 </head>
-<div id="modalImg" class="modal">
 <span class="cerrar" onclick="cerrarModal()">✕</span>
 <img id="imgGrande">
 </div>
+<div id="modalImg" class="modal">
+
   
 <body>
 
@@ -575,7 +604,7 @@ cont.innerHTML='';
 lista.forEach(e=>{
 cont.innerHTML+=`
 <div class="card">
-<img src="${e.img}">
+<img src="${e.img}" onclick="abrirModal('${e.img}')">
 <div class="card-content">
 <h3>${e.nombre}</h3>
 <p class="precio">4h $${e.precio4h}</p>
