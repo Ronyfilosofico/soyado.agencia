@@ -61,7 +61,15 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
-.card,.pack{background:#141414;border-radius:10px;overflow:hidden;}
+.card,.pack{
+background:#141414;
+border-radius:10px;
+overflow:hidden;
+padding-bottom:10px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
 .card img{
 width:100%;
 height:220px;
@@ -164,15 +172,19 @@ transform: translateY(-8px) scale(1.02);
 box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
-.pack-content p{
+.pack-content{
+padding:12px;
 font-size:14px;
-line-height:1.6;
-color:#ccc;
-margin:8px 0;
+line-height:1.4;
 }
 
-.pack-content b{
-color:#eab22f;
+.pack-content ul{
+padding-left:18px;
+margin:10px 0;
+}
+
+.pack-content li{
+margin-bottom:4px;
 }
 
 *{
