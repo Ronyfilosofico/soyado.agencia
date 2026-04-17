@@ -17,7 +17,24 @@ header button{
 background:none;border:none;color:#eab22f;
 cursor:pointer;font-weight:bold;
 }
+header button{
+position:relative;
+}
 
+header button::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#eab22f;
+transition:0.3s;
+}
+
+header button:hover::after{
+width:100%;
+}
 .section{
 display:none;
 padding:100px 20px 40px;
