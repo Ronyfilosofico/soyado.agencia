@@ -68,7 +68,24 @@ gap:20px;
 .precio{color:#eab22f;}
 
 .filtros{text-align:center;margin-bottom:20px;}
-.filtros button{margin:5px;padding:8px;border:none;cursor:pointer;font-weight:bold;}
+.filtros button{
+margin:5px;
+padding:10px 16px;
+border-radius:20px;
+border:1px solid #eab22f;
+background:transparent;
+color:#eab22f;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+.filtros button:hover{
+background:#eab22f;
+color:#000;
+transform:scale(1.05);
+box-shadow:0 0 10px rgba(234,178,47,0.5);
+}
 
 .grid-condiciones{
 display:grid;
